@@ -1,3 +1,6 @@
+import './Proxy.ts'
+import './EventProducer'
+
 export interface MessageDto {
     id: number;
     timeStamp: string;
