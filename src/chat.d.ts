@@ -60,7 +60,7 @@ export class EventProducer {
         this.listeners.splice(this.listeners.findIndex(x => x.type === type && x.listener === listener), 1);
     }
 
-    protected dispatch<K extends keyof M>(type: K, listener: M[K], ...args) {
+    protected dispatch<K extends keyof M>(type: K, ...args) {
         for (let listener of this.listeners.filter(x => x.type === type))
             listener.listener.call(listener.obj, ...args);
     }
@@ -86,6 +86,7 @@ class Proxy extends EventProducer<ProxyEventMap> {
     removeAllEventListener(obj: Object) {
         super.removeAllEventListener(obj);
     }
+
     private ws: WebSocket;
     inbox: InboxDto | null = null;
     constructor() {
