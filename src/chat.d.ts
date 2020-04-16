@@ -80,20 +80,17 @@ interface ProxyEventMap {
 }
 
 class Proxy extends EventProducer<ProxyEventMap> {
+    addEventListener<K extends keyof M>(type: K, listener: M[K], obj?: Object) {
+        super.addEventListener(type, listener, obj);
+    }
+    removeAllEventListener(obj: Object) {
+        super.removeAllEventListener(obj);
+    }
     private ws: WebSocket;
     inbox: InboxDto | null = null;
     constructor() {
         super();
         this.ws = new WebSocket("wss://raja.aut.bme.hu/chat/");
-        this.ws.addEventListener("open", () => {
-            // this.sendPacket({
-            //     type: "register",
-            //     email: "a@b.com",
-            //     password:  "pw",
-            //     displayName: "thisplay",
-            //     staySignedIn: true
-            // });
-        });
         this.ws.addEventListener("message", e => {
             let p = <IncomingPacket>JSON.parse(e.data);
             switch (p.type) {
