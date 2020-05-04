@@ -30,10 +30,8 @@ export class Login extends Component {
     }
 
     unique_code(e: string) {
-        if (!this.state.register) {
-            if (e === "ABCDEF") {
-                this.setState({email: e, displayName: "Richard"});
-            }
+        if (e === "UFFC7N") {
+            this.setState({email: e, displayName: "Richard"});
         }
         this.setState({email: e});
     }
