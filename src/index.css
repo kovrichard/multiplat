@@ -131,6 +131,11 @@ button:hover {
     white-space: nowrap;
 }
 
+.left-pane {
+    border-right: solid #aaa;
+    border-right-width: 2px;
+}
+
 @media (max-width: 650px) {
     .left .right-pane {
         display: none;
@@ -141,11 +146,9 @@ button:hover {
     .left .left-pane {
         flex: 1;
     }
-}
-
-.left-pane {
-    border-right: solid #aaa;
-    border-right-width: 0 0 0 1px;
+    .left-pane {
+        border-right: none;
+    }
 }
 
 .right-pane .conversation-header {
