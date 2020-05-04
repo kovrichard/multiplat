@@ -1,4 +1,4 @@
-import { register } from "./serviceWorker";
+import "./serviceWorker";
 
 export interface MessageDto {
     id: number;
@@ -93,7 +93,7 @@ class Proxy extends EventProducer<ProxyEventMap> {
         super();
         this.ws = new WebSocket("wss://raja.aut.bme.hu/chat/");
         this.ws.addEventListener("message", e => {
-            let p = <IncomingPacket>JSON.parse(e.data);
+            let p = JSON.parse(e.data) as IncomingPacket;
             switch (p.type) {
                 case "error":
                     alert(p.message);
@@ -109,6 +109,7 @@ class Proxy extends EventProducer<ProxyEventMap> {
                     break;
                 case "register":
                     this.dispatch("register");
+                    break;
                 case "conversationAdded":
                     this.inbox!.conversations.push(p.conversation);
                     this.dispatch("conversation", p.conversation.channelId);

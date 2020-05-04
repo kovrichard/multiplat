@@ -8,7 +8,7 @@ export class Login extends Component {
     render() {
         return (
             <div className="login">
-                <img src="logo512.png" width="256" />
+                <img src="logo512.png" width="256" alt=""/>
                 <TextInput type="email" placeholder="Email (someone@example.com)" value={this.state.email}
                     onChange={e => this.unique_code(e)} autofocus={true} onEnter={ () => this.onClick() } />
                 <TextInput type="password" placeholder="Password" value={this.state.password}
@@ -20,9 +20,9 @@ export class Login extends Component {
                     <TextInput type="text" placeholder="Display Name (Agent Smith)" value={this.state.displayName}
                         onChange={e => this.setState({ displayName: e })} onEnter={ () => this.onClick() } />}
                 <p>{this.state.register ? "Switch back to " : "Have no account yet? Go and "}
-                    <a href="" onClick={e => { e.preventDefault(); this.setState({ register: !this.state.register }); }}>
+                    <button onClick={e => { e.preventDefault(); this.setState({ register: !this.state.register }); }}>
                         {this.state.register ? "Login" : "Register"}
-                    </a>
+                    </button>
                 </p>
 
                 <a href="https://www.google.hu/search?q=privacy">Privacy Policy</a>
